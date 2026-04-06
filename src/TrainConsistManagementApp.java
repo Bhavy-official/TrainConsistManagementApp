@@ -30,7 +30,7 @@ public class TrainConsistManagementApp {
 
         bogieIDs.add("BG101");
         bogieIDs.add("BG102");
-        bogieIDs.add("BG101");
+        bogieIDs.add("BG101"); // duplicate
         bogieIDs.add("BG103");
 
         System.out.println("Unique Bogie IDs:");
@@ -52,6 +52,18 @@ public class TrainConsistManagementApp {
 
         System.out.println("Final ordered train consist:");
         System.out.println(trainConsist);
+
+        // UC5 Train formation with LinkedHashSet
+        LinkedHashSet<String> formation = new LinkedHashSet<>();
+
+        formation.add("Engine");
+        formation.add("Sleeper");
+        formation.add("Cargo");
+        formation.add("Guard");
+        formation.add("Sleeper"); // duplicate
+
+        System.out.println("Train formation (insertion order preserved):");
+        System.out.println(formation);
 
     }
 }
