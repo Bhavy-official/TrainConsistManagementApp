@@ -30,11 +30,28 @@ public class TrainConsistManagementApp {
 
         bogieIDs.add("BG101");
         bogieIDs.add("BG102");
-        bogieIDs.add("BG101");   // duplicate
+        bogieIDs.add("BG101");
         bogieIDs.add("BG103");
 
         System.out.println("Unique Bogie IDs:");
         System.out.println(bogieIDs);
+
+        // UC4 Ordered Train Consist
+        LinkedList<String> trainConsist = new LinkedList<>();
+
+        trainConsist.add("Engine");
+        trainConsist.add("Sleeper");
+        trainConsist.add("AC");
+        trainConsist.add("Cargo");
+        trainConsist.add("Guard");
+
+        trainConsist.add(2,"Pantry Car");
+
+        trainConsist.removeFirst();
+        trainConsist.removeLast();
+
+        System.out.println("Final ordered train consist:");
+        System.out.println(trainConsist);
 
     }
 }
