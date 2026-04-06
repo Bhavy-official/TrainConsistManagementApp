@@ -1,47 +1,24 @@
-import java.util.*;
+// Train Consist Management App
+// UC17 - Sort Bogie Names Using Arrays.sort()
+// @author - Bhavy Manchanda
+
+import java.util.Arrays;
 
 public class TrainConsistManagementApp {
-
-    static class PassengerBogie {
-        String type;
-        int capacity;
-
-        PassengerBogie(String type, int capacity) {
-            this.type = type;
-            this.capacity = capacity;
-        }
-    }
 
     public static void main(String[] args) {
 
         System.out.println("=====================================");
-        System.out.println("   UC16 - Sort Passenger Bogies by Capacity");
+        System.out.println("   UC17 - Sort Bogie Names Alphabetically");
         System.out.println("=====================================\n");
 
-        PassengerBogie[] bogies = {
-                new PassengerBogie("Sleeper", 72),
-                new PassengerBogie("AC Chair", 56),
-                new PassengerBogie("First Class", 24),
-                new PassengerBogie("Sleeper", 70),
-                new PassengerBogie("AC Chair", 60)
-        };
+        String[] bogieNames = {"Sleeper", "AC Chair", "First Class", "General", "Luxury"};
 
-        int n = bogies.length;
-        for (int i = 0; i < n - 1; i++) {
-            for (int j = 0; j < n - 1 - i; j++) {
-                if (bogies[j].capacity > bogies[j + 1].capacity) {
-                    PassengerBogie temp = bogies[j];
-                    bogies[j] = bogies[j + 1];
-                    bogies[j + 1] = temp;
-                }
-            }
-        }
+        Arrays.sort(bogieNames);
 
-        System.out.println("Sorted Passenger Bogies by Capacity:");
-        for (PassengerBogie b : bogies) {
-            System.out.println(b.type + " -> " + b.capacity);
-        }
+        System.out.println("Sorted Bogie Names:");
+        System.out.println(Arrays.toString(bogieNames));
 
-        System.out.println("\nUC16 completed...");
+        System.out.println("\nUC17 completed...");
     }
 }
