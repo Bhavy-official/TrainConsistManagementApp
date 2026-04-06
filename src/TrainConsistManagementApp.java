@@ -1,5 +1,4 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class TrainConsistManagementApp {
 
@@ -7,9 +6,9 @@ public class TrainConsistManagementApp {
 
         System.out.println("=== Train Consist Management App ===");
 
+        // UC2 Passenger bogies
         List<String> passengerBogies = new ArrayList<>();
 
-        // Adding bogies
         passengerBogies.add("Sleeper");
         passengerBogies.add("AC Chair");
         passengerBogies.add("First Class");
@@ -17,19 +16,25 @@ public class TrainConsistManagementApp {
         System.out.println("Passenger bogies after addition:");
         System.out.println(passengerBogies);
 
-        // Removing AC Chair
         passengerBogies.remove("AC Chair");
 
         System.out.println("After removing AC Chair:");
         System.out.println(passengerBogies);
 
-        // Checking existence
         if(passengerBogies.contains("Sleeper")){
             System.out.println("Sleeper bogie exists.");
         }
 
-        System.out.println("Final consist:");
-        System.out.println(passengerBogies);
+        // UC3 Unique bogie IDs
+        Set<String> bogieIDs = new HashSet<>();
+
+        bogieIDs.add("BG101");
+        bogieIDs.add("BG102");
+        bogieIDs.add("BG101");   // duplicate
+        bogieIDs.add("BG103");
+
+        System.out.println("Unique Bogie IDs:");
+        System.out.println(bogieIDs);
 
     }
 }
