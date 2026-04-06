@@ -1,24 +1,38 @@
 // Train Consist Management App
-// UC17 - Sort Bogie Names Using Arrays.sort()
+// UC18 - Linear Search for Bogie ID
 // @author - Bhavy Manchanda
 
-import java.util.Arrays;
+import java.util.Scanner;
 
 public class TrainConsistManagementApp {
 
     public static void main(String[] args) {
 
         System.out.println("=====================================");
-        System.out.println("   UC17 - Sort Bogie Names Alphabetically");
+        System.out.println("   UC18 - Linear Search for Bogie ID");
         System.out.println("=====================================\n");
 
-        String[] bogieNames = {"Sleeper", "AC Chair", "First Class", "General", "Luxury"};
+        String[] bogieIDs = {"BG101", "BG205", "BG309", "BG412", "BG550"};
 
-        Arrays.sort(bogieNames);
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter Bogie ID to search: ");
+        String searchKey = sc.nextLine();
 
-        System.out.println("Sorted Bogie Names:");
-        System.out.println(Arrays.toString(bogieNames));
+        boolean found = false;
+        for (String id : bogieIDs) {
+            if (id.equals(searchKey)) {
+                found = true;
+                break;
+            }
+        }
 
-        System.out.println("\nUC17 completed...");
+        if (found) {
+            System.out.println("Bogie ID " + searchKey + " found in the consist.");
+        } else {
+            System.out.println("Bogie ID " + searchKey + " NOT found in the consist.");
+        }
+
+        System.out.println("\nUC18 completed...");
+        sc.close();
     }
 }
