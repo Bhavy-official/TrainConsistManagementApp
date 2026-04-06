@@ -2,50 +2,46 @@ import java.util.*;
 
 public class TrainConsistManagementApp {
 
-    static class CargoSafetyException extends RuntimeException {
-        public CargoSafetyException(String message) {
-            super(message);
-        }
-    }
+    static class PassengerBogie {
+        String type;
+        int capacity;
 
-    static class GoodsBogie {
-        String shape;
-        String cargo;
-
-        GoodsBogie(String shape) {
-            this.shape = shape;
-        }
-
-        void assignCargo(String cargo) {
-            try {
-                if (shape.equalsIgnoreCase("Rectangular") && cargo.equalsIgnoreCase("Petroleum")) {
-                    throw new CargoSafetyException("Unsafe cargo assignment: Petroleum cannot be loaded in Rectangular bogie");
-                }
-                this.cargo = cargo;
-                System.out.println("Cargo assigned: " + cargo + " -> " + shape + " bogie");
-            } catch (CargoSafetyException e) {
-                System.out.println("Error: " + e.getMessage());
-            } finally {
-                System.out.println("Cargo assignment attempt completed for " + shape + " bogie\n");
-            }
+        PassengerBogie(String type, int capacity) {
+            this.type = type;
+            this.capacity = capacity;
         }
     }
 
     public static void main(String[] args) {
 
         System.out.println("=====================================");
-        System.out.println("   UC15 - Safe Cargo Assignment");
+        System.out.println("   UC16 - Sort Passenger Bogies by Capacity");
         System.out.println("=====================================\n");
 
-        List<GoodsBogie> bogies = new ArrayList<>();
+        PassengerBogie[] bogies = {
+                new PassengerBogie("Sleeper", 72),
+                new PassengerBogie("AC Chair", 56),
+                new PassengerBogie("First Class", 24),
+                new PassengerBogie("Sleeper", 70),
+                new PassengerBogie("AC Chair", 60)
+        };
 
-        bogies.add(new GoodsBogie("Cylindrical"));
-        bogies.add(new GoodsBogie("Rectangular"));
+        int n = bogies.length;
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < n - 1 - i; j++) {
+                if (bogies[j].capacity > bogies[j + 1].capacity) {
+                    PassengerBogie temp = bogies[j];
+                    bogies[j] = bogies[j + 1];
+                    bogies[j + 1] = temp;
+                }
+            }
+        }
 
-        bogies.get(0).assignCargo("Petroleum");
-        bogies.get(1).assignCargo("Petroleum");
-        bogies.get(1).assignCargo("Coal");
+        System.out.println("Sorted Passenger Bogies by Capacity:");
+        for (PassengerBogie b : bogies) {
+            System.out.println(b.type + " -> " + b.capacity);
+        }
 
-        System.out.println("UC15 completed...");
+        System.out.println("\nUC16 completed...");
     }
 }
