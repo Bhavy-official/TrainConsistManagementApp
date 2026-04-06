@@ -78,5 +78,20 @@ public class TrainConsistManagementApp {
             System.out.println(entry.getKey()+" -> "+entry.getValue());
         }
 
+        // UC7 Sorting bogies by capacity
+        List<Bogie> bogieList = new ArrayList<>();
+
+        bogieList.add(new Bogie("Sleeper",72));
+        bogieList.add(new Bogie("AC Chair",54));
+        bogieList.add(new Bogie("First Class",24));
+
+        bogieList.sort(Comparator.comparingInt(b -> b.capacity));
+
+        System.out.println("Bogies sorted by capacity:");
+
+        for(Bogie b : bogieList){
+            System.out.println(b);
+        }
+
     }
 }
